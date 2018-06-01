@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Explorable Explanation: Random Forest Visualization</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+      /* body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      } */
+      
+      .viz iframe {
+        width: 100%;
+        height: 1000px;
+        border: none;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Explorable Explanation: Random Forests</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Introduction
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Visualization</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Random Forest Visualization : Introduction </h1>
+            <img src="tree-animated-gif-3.gif">
+          <h3 class="mt-5">Difference between Random Forests and Decision Trees</h3>
+          <p class="lead">Decision trees are extremely intuitive ways to classify or label objects: you simply ask a series of questions designed to zero-in on the classification. For example, if you wanted to
+            build a decision tree to classify an animal you come across while on a hike,
+            you might construct the one shown here:</p>
+          <img src="DecisionTrees.png">
+          <p>Image Courtesy - https://jakevdp.github.io</p>
+        <!--  <ul class="list-unstyled">
+            <li>Bootstrap 4.1.1</li>
+            <li>jQuery 3.3.1</li>
+          </ul>-->
+         <p class="lead">The binary splitting makes this extremely efficient: in a well-constructed tree, each question will cut the number of options by approximately half, very quickly narrowing the options even among a large number of classes. The trick, of course, comes in deciding which questions to ask at each step. In machine learning implementations of decision trees, the questions generally take the form of axis-aligned splits in the data: that is, each node in the tree splits the data into two groups using a cutoff value within one of the features
+           Random Forests are an ensemble of k untrained Decision Trees (trees with only a root node) with M bootstrap samples (k and M do not have to be the same) trained using a variant of random subspace method or feature bagging method. The procedure for training a random forest is as follows:
+         </p>
+          <ol>
+            <li>At the current node, randomly select p features from available features D.
+              The number of features p is usually much smaller than the total number of features D.
+            </li>
+            <li>Compute the best split point for tree k using the specified splitting metric (Gini Impurity, Information Gain, etc.)
+              and split the current node into daughter nodes and reduce the number of features D from this node on.
+            </li>
+            <li>Repeat steps 1 to 2 until
+              either a maximum tree depth l has been reached or the splitting metric reaches some extrema.
+            </li>
+            <li>Repeat steps 1 to 3 for each tree k in the forest.
+            </li>
+            <li>Vote or aggregate on the output of each tree in the forest.
+            </li>
+          </ol>
+          <img src = "RandomForestsSimplified.png">
+          <p>Image Courtesy - https://medium.com</p>
+          <p class="lead">Compared with single decision trees, random forests split by selecting multiple feature variables instead of single features variables at each split point.
+            Intuitively, the variable selection properties of decision trees can be drastically improved using this feature
+            bagging procedure. Typically, the number of trees k is large, on the order of hundreds to thousands for large
+            datasets with many features.</p>
+          <h3 class="mt-5">Bootstrap Aggregation(Bagging)</h3>
+          <p class ="lead">Bootstrap Aggregation, or bagging is a powerful technique that reduces model variances (overfitting) and improves the outcome of learning on limited sample (i.e. small number of observations) or unstable datasets. Bagging works by taking the original dataset and creating M subsets each with n samples per subset. The n individual samples are uniformly sampled
+            with replacement from the original dataset. The diagram illustrates this.</p>
+          <img src = "Bootstrapping.png">
+          <p>Image Courtesy - https://towardsdatascience.com</p>
+          <p class = "lead" >In the diagram, the labels corresponding to each data point are preserved. In other words, each data tuple (X,Y)ᵢ is sampled and subsetted where each Xᵢ is a vector of inputs and Yᵢ is a vector of responses. Theoretically, as the number of bootstrap samples M approaches infinity, bagging is shown to converge to the mean of some non-bagged function estimator utilizing
+            all possible samples from the original dataset</p>
+          <h3 class="mt-5">Ensemble Methods</h3>
+          <p class="lead">Next, k individual learning models (called an ensemble) are created for each M bootstrap sample. The outputs of each individual learning model are then aggregated or averaged in some way, such as voting or simple means averaging.
+            This is illustrated in the figure below.</p>
+          <img src="EnsembleMethods.png">
+          <p>Image Courtesy - https://towardsdatascience.com</p>
+          <p class = "lead">In general, bagging with ensemble models is a robust method for reducing the variance and overfitting of your learning models by utilizing bootstrap samples and aggregating the output (mean, median, other more complicated methods) of the learning ensembles. Bagging and ensembles are general and can be applied to any supervised model from neural networks to SVMs to decision trees, as well as unsupervised clustering models (to be covered in another article). In practice,
+            M is chosen to be at least 50 and n is 80% of the size of the original dataset.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <h3 class="mt-5">Your Turn</h3>
+        <p>
+          Now it's your turn to interact with a Random Forest. Using the iris dataset from Ronald Fisher's  1936 paper: The use of multiple measurements in taxonomic problems,
+          we built a 16 tree random forest (scaled down for simplicity) that predicts the genus of an iris based on its sepal and petal measurements. Create your own datapoint
+          using the sliders on the left, and see how each tree (the circles in the random forest section) changes as the data value for each feature changes. You may also click
+          on individual trees to see how they are constructed, and how your created data point traverses through each tree (blue nodes are traversed nodes and grey are not traversed).
+        </p>
+    </div>
+
+    <div class="container viz">
+        <iframe src="https://shigenaka.github.io/INFX-562-Final-Project/" name="iframe_a"></iframe>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>
